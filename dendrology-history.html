@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>История дендрологии и значение древесных растений</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root{--p:#eadfc8;--k:#2b1d12;--a:#a0522d;--a2:#d8935c;--l:rgba(43,29,18,.22)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--k);font:300 17px/1.55 Inter,sans-serif}
+#track{display:flex;height:100%;transition:transform .9s cubic-bezier(.77,0,.18,1)}
+.slide{flex:0 0 100vw;height:100vh;position:relative;padding:8vh 6vw 10vh;display:grid;gap:4vw;align-items:center;overflow:hidden}
+.light{background:var(--p);color:var(--k)}.dark{background:var(--k);color:var(--p)}
+.g2{grid-template-columns:1fr 1fr}
+.m{font:400 12px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+h1,h2,h3,.serif{font-family:'Playfair Display',serif;font-weight:500;line-height:1.04}
+h1{font-size:min(7vw,14vh)}h2{font-size:min(4.6vw,8.6vh);margin:1.5vh 0 2.5vh}
+i{color:var(--a);font-weight:500}.dark i{color:var(--a2)}
+p.lead{font-size:min(1.45vw,2.7vh);max-width:34em;opacity:.9}
+.chrome{position:absolute;top:3vh;left:6vw;right:6vw;display:flex;justify-content:space-between}
+.stage{height:66vh;position:relative;border:1px solid var(--l);background:#0001}.dark .stage{border-color:#fff3;background:#fff1}
+canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.tag{position:absolute;left:14px;bottom:10px}
+.tl{border-left:1px solid var(--l);padding-left:2vw}.dark .tl{border-color:#fff4}
+.ev{position:relative;padding:1.1vh 0}.ev:before{content:'';position:absolute;left:calc(-2vw - 4px);top:2vh;width:7px;height:7px;background:var(--a)}
+.ev b{font:500 min(1.6vw,3vh) 'Playfair Display',serif;color:var(--a);margin-right:.8em}.dark .ev b{color:var(--a2)}.ev span{font-size:min(1.15vw,2.1vh)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1.4vw}.c3{grid-template-columns:repeat(3,1fr)}
+.card{border:1px solid var(--l);padding:2.2vh 1.3vw;background:#fff5}.dark .card{background:#fff1;border-color:#fff3}
+.card h3{font-size:min(2vw,3.6vh);color:var(--a);margin-bottom:.8vh}.dark .card h3{color:var(--a2)}.card p{font-size:min(1.1vw,2vh);line-height:1.5}
+.big{font:500 min(8vw,16vh)/1 'Playfair Display',serif;color:var(--a)}.dark .big{color:var(--a2)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:2vh 0}.tabs button{background:none;border:1px solid currentColor;color:inherit;padding:.9vh 1.1vw;font:12px 'JetBrains Mono';letter-spacing:.1em;cursor:pointer;text-transform:uppercase}.tabs button.on{background:var(--a2);color:var(--k);border-color:var(--a2)}
+input[type=range]{width:100%;accent-color:var(--a2);margin:2vh 0}
+#nav{position:fixed;bottom:3vh;left:6vw;right:6vw;display:flex;align-items:center;z-index:9;mix-blend-mode:difference;color:#fff}
+#prog{height:2px;background:#fff;width:0;transition:width .8s}#nav button{background:none;border:0;color:#fff;font-size:22px;cursor:pointer;padding:0 10px}
+@media(max-width:800px){.slide{grid-template-columns:1fr!important;overflow-y:auto;align-content:start}.stage{height:40vh}h1{font-size:11vw}h2{font-size:8vw}p.lead,.card p,.ev span{font-size:15px}.cards,.c3{grid-template-columns:1fr}}
+</style></head><body>
+<div id="track">
+
+<section class="slide dark g2" data-v="0">
+ <div class="chrome m"><span>Учебный конспект · Дендрология</span><span>01 / 09</span></div>
+ <div><div class="m">История и значение</div><h1 style="margin-top:2vh">История <i>дендрологии</i> и древесные растения</h1>
+ <p class="lead" style="margin-top:3vh">От Теофраста до дендрариев Азербайджана: как возникла наука и почему деревья нужны человеку.</p></div>
+ <div class="stage"><canvas id="c0"></canvas><span class="tag m">3D · парк из разных пород</span></div>
+</section>
+
+<section class="slide light g2">
+ <div class="chrome m"><span>Мир</span><span>02 / 09</span></div>
+ <div><div class="m">Основные этапы в мире</div><h2>Как из садов <i>выросла</i> наука</h2>
+ <p class="lead">Первые сведения о древесных растениях появились в глубокой древности: лес давал пищу, укрытие, материал и топливо. Самостоятельной отраслью ботаники дендрология оформилась со второй половины XVIII века.</p></div>
+ <div class="tl">
+  <div class="ev"><b>IV в. до н.э.</b><span>Теофраст: первая классификация — деревья, кустарники, полукустарники, травы; вечнозелёные и листопадные.</span></div>
+  <div class="ev"><b>Начало н.э.</b><span>Колумелла: в труде «О сельском хозяйстве» отдельное приложение по дендрологии.</span></div>
+  <div class="ev"><b>Средние века</b><span>Теоретическая ботаника развивалась слабо, но в садах копились полезные растения.</span></div>
+  <div class="ev"><b>Возрождение</b><span>Регулярные парки, где главным был дворец.</span></div>
+  <div class="ev"><b>XVIII в.</b><span>Пейзажные парки, подражающие природе. Павловский парк как образец.</span></div>
+  <div class="ev"><b>1758</b><span>Дю Монсо (Франция): книга о древесных растениях и первый в истории дендрариум.</span></div></div>
+</section>
+
+<section class="slide dark g2" data-v="1">
+ <div class="chrome m"><span>Ключевое понятие</span><span>03 / 09</span></div>
+ <div><div class="m">Дендрариум</div><h2>Коллекция <i>живых</i> деревьев</h2>
+ <p class="lead">Дендрологический сад — специальная коллекция культивируемых древесных растений. Выберите группу, чтобы увидеть её в 3D.</p>
+ <div class="tabs" id="tabs"></div><p class="lead" id="td" style="font-size:min(1.2vw,2.2vh)"></p></div>
+ <div class="stage"><canvas id="c1"></canvas><span class="tag m">3D · дендрариум</span></div>
+</section>
+
+<section class="slide light g2">
+ <div class="chrome m"><span>Азербайджан</span><span>04 / 09</span></div>
+ <div><div class="m">Древние и средневековые корни</div><div class="big">5–6 тыс.</div><div class="m" style="margin-bottom:2.5vh">лет назад начали заниматься садоводством</div>
+ <p class="lead">В Средние века Шемаха, Барда, Гянджа, Губа и другие центры раньше Западной Европы развивали субтропическое плодоводство, лесное хозяйство и декоративное садоводство: орех, инжир, фисташка, гранат, виноград, шелковица.</p></div>
+ <div><div class="m" style="margin-bottom:1.5vh">Научные центры XX века</div>
+ <div class="cards c3"><div class="card"><h3>1926</h3><p>Дендрологический сад в пос. Мардакян</p></div><div class="card"><h3>1932–34</h3><p>Ботанический институт и сад в Баку</p></div><div class="card"><h3>1960</h3><p>Дендрологический сад в Барде</p></div></div>
+ <p class="lead" style="margin-top:3vh;font-size:min(1.2vw,2.2vh)">Они расширили породный состав и сформировали парково-садовую культуру Баку, Гянджи, Сумгаита и Мингячевира.</p></div>
+</section>
+
+<section class="slide dark g2" data-v="2">
+ <div class="chrome m"><span>Дендрофлора</span><span>05 / 09</span></div>
+ <div><div class="m">Богатство районов, % флоры республики</div><h2>Где <i>больше</i> всего видов</h2>
+ <div class="cards"><div class="card"><div class="big" style="font-size:min(5vw,10vh)">480</div><p>видов деревьев и кустарников из ~4500, это 11% флоры</p></div><div class="card"><div class="big" style="font-size:min(5vw,10vh)">70+</div><p>региональных эндемиков, 16% древесно-кустарниковых</p></div></div>
+ <p class="lead" style="margin-top:2.5vh;font-size:min(1.15vw,2.1vh)">Колонки по порядку: Нахчыван 43, Губа (горы) 40, центр Малого Кавказа 34,5, восток Большого Кавказа 29,4, горный Талыш 27.</p></div>
+ <div class="stage"><canvas id="c2"></canvas><span class="tag m">3D · колонки богатства флоры</span></div>
+</section>
+
+<section class="slide light">
+ <div class="chrome m"><span>Растительность</span><span>06 / 09</span></div>
+ <div><div class="m">На небольшой территории</div><h2 style="max-width:14em">Шесть типов <i>растительности</i></h2></div>
+ <div class="cards c3">
+  <div class="card"><h3>Бореальная лесная</h3><p>Талыш, Малый и Большой Кавказ.</p></div><div class="card"><h3>Пустынная</h3><p>Кура-Аразская равнина.</p></div><div class="card"><h3>Ксерофитная</h3><p>Засухоустойчивые сообщества.</p></div>
+  <div class="card"><h3>Степная</h3><p>Открытые травянистые пространства.</p></div><div class="card"><h3>Кавказская</h3><p>Горная флора региона.</p></div><div class="card"><h3>Адвентивная</h3><p>Заносные виды.</p></div></div>
+</section>
+
+<section class="slide dark" style="align-content:center">
+ <div class="chrome m"><span>Значение в жизни человека</span><span>07 / 09</span></div>
+ <div><div class="m">Зелёные растения — единственный источник органики и кислорода</div><h2>Цифры <i>конспекта</i></h2></div>
+ <div class="cards c3" style="gap:2.5vw">
+  <div class="card"><div class="big">70%</div><p>из 172,5 млрд т органики в год образуют леса</p></div>
+  <div class="card"><div class="big">200+</div><p>млрд т кислорода в год выделяют леса</p></div>
+  <div class="card"><div class="big">6100</div><p>видов использует человек из 500 тыс.: 800 лекарственных, 600 технических, 700 пищевых, 4000 кормовых</p></div></div>
+ <p class="serif" style="font-size:min(2.4vw,4.4vh);max-width:26em">«Зелёные растения защищают людей от удушья» <span class="m">— Гасан бек Зардаби</span></p>
+</section>
+
+<section class="slide light g2" data-v="3">
+ <div class="chrome m"><span>Роль леса</span><span>08 / 09</span></div>
+ <div><div class="m">Подвигайте лесистость</div><h2>Лесов <i>мало</i> или много?</h2>
+ <input type="range" id="rg" min="0" max="100" value="20"><div class="big" id="pc" style="font-size:min(5vw,10vh)"></div>
+ <h3 id="rt" style="color:var(--a);margin:1vh 0;font-size:min(2.4vw,4.4vh)"></h3><p class="lead" id="rd" style="font-size:min(1.25vw,2.3vh)"></p>
+ <p class="m" style="margin-top:2vh">Социальная роль важна всем: обычаи, занятость, благополучие лесных посёлков.</p></div>
+ <div class="stage"><canvas id="c3"></canvas><span class="tag m">3D · участок леса</span></div>
+</section>
+
+<section class="slide dark g2">
+ <div class="chrome m"><span>Итоги</span><span>09 / 09</span></div>
+ <div><div class="m">Вывод</div><h2 style="font-size:min(5.6vw,10.5vh)">Дерево — <i>наука</i>, ресурс и среда</h2></div>
+ <div><p class="lead">Дендрология прошла путь от классификации Теофраста до дендрариумов. В Азербайджане она опирается на давнюю садовую культуру и богатую флору. Лес защищает среду, даёт ресурсы и держит социальную жизнь.</p><div class="m" style="margin-top:4vh">Спасибо за внимание</div></div>
+</section>
+</div>
+<div id="nav"><button id="pv">←</button><div style="flex:1;margin:0 2vw"><div id="prog"></div></div><button id="nx">→</button></div>
+
+<script>
+const T=THREE,V=(x,y,z)=>new T.Vector3(x,y,z);let sd=1;const R=()=>(sd=sd*16807%2147483647)/2147483647;
+const M=c=>new T.MeshStandardMaterial({color:c,flatShading:true,roughness:.9}),bark=M(0x5a4030),views=[];
+const blob=(r,x,y,z,m,sx=1,sy=.85)=>{const g=new T.Mesh(new T.IcosahedronGeometry(r,1),m);g.position.set(x,y,z);g.scale.set(sx,sy,sx);return g};
+const limb=(a,b,r0,r1,m=bark)=>{const d=new T.Vector3().subVectors(b,a),l=d.length(),g=new T.Mesh(new T.CylinderGeometry(r1,r0,l,6),m);g.position.copy(a).add(b).multiplyScalar(.5);g.quaternion.setFromUnitVectors(V(0,1,0),d.normalize());return g};
+function tree(k,s,m){const g=new T.Group();
+ if(k==1){g.add(limb(V(0,0,0),V(0,2.4*s,0),.12*s,.07*s));for(let i=0;i<4;i++){const c=new T.Mesh(new T.ConeGeometry((1.1-i*.2)*s,1*s,7),m);c.position.y=(1+i*.65)*s;g.add(c)}}
+ else if(k==2){g.add(limb(V(0,0,0),V(0,1*s,0),.2*s,.14*s));g.add(blob(1.2*s,0,1.7*s,0,m,1,.5))}
+ else{g.add(limb(V(0,0,0),V(0,2.2*s,0),.14*s,.08*s));g.add(blob(.95*s,0,2.8*s,0,m,1,1))}return g}
+const GM=[M(0x4f7a3a),M(0xb5572a),M(0xd9a441)];
+function viewer(id,build,d,h,idx){const c=document.getElementById(id),r=new T.WebGLRenderer({canvas:c,antialias:true,alpha:true}),sc=new T.Scene(),cam=new T.PerspectiveCamera(40,1,.1,200),P=new T.Group();
+ sc.add(new T.HemisphereLight(0xfff4e0,0x6a5a40,1),P);const L=new T.DirectionalLight(0xfff2d0,1);L.position.set(5,9,6);sc.add(L);
+ const gr=new T.Mesh(new T.CylinderGeometry(7.5,7.5,.2,48),M(0x6b5a3a));gr.position.y=-.1;P.add(gr);
+ cam.position.set(0,h+d*.45,d);cam.lookAt(0,h-.3,0);const v={idx,on:false,drag:false,cur:null,set(fn){if(v.cur)P.remove(v.cur);v.cur=fn();P.add(v.cur)},
+ draw(){const w=c.clientWidth,hh=c.clientHeight;if(c.width!=w||c.height!=hh){r.setSize(w,hh,false);cam.aspect=w/hh;cam.updateProjectionMatrix()}if(!v.drag)P.rotation.y+=.005;r.render(sc,cam)}};
+ let x;c.onpointerdown=e=>{v.drag=true;x=e.clientX;c.setPointerCapture(e.pointerId)};c.onpointermove=e=>{if(v.drag){P.rotation.y+=(e.clientX-x)*.01;x=e.clientX}};c.onpointerup=()=>v.drag=false;
+ v.set(build);views.push(v);return v}
+viewer('c0',()=>{const g=new T.Group();for(let i=0;i<9;i++){const a=i*.7,r=i?3.6:0,t=tree(i%3,i?1.1:1.6,GM[i%3]);t.position.set(Math.cos(a)*r,0,Math.sin(a)*r);g.add(t)}return g},13,1.2,0);
+const GR=[["Все","Три вида растений вместе."],["Аборигенные","Местные виды, растущие в естественном ареале."],["Интродуценты","Экзоты, разводимые за пределами естественного ареала."],["Культурные сорта","Выведенные человеком сорта."]];let grp=[[],[],[]];
+const v1=viewer('c1',()=>{const g=new T.Group();grp=[[],[],[]];for(let i=0;i<20;i++){const k=i%3,t=tree(k==1?1:k==2?2:0,1.1,GM[k]);t.position.set((i%5-2)*2.5,0,(Math.floor(i/5)-1.5)*2.4);g.add(t);grp[k].push(t)}return g},14,1.4,1);
+const tb=document.getElementById('tabs');GR.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s[0];b.onclick=()=>{[...tb.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');grp.forEach((a,j)=>a.forEach(t=>t.visible=!i||i-1==j));td.textContent=s[1]};tb.appendChild(b)});tb.children[0].click();
+const lab=t=>{const c=document.createElement('canvas');c.width=128;c.height=64;const x=c.getContext('2d');x.fillStyle='#eadfc8';x.font='600 44px Inter';x.textAlign='center';x.fillText(t,64,48);const s=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(c)}));s.scale.set(2,1,1);return s};
+viewer('c2',()=>{const g=new T.Group();[43,40,34.5,29.4,27].forEach((v,i)=>{const h=v/9,m=new T.Mesh(new T.BoxGeometry(1.2,h,1.2),M(i?0xb5572a:0xd9935c));m.position.set((i-2)*1.9,h/2,0);g.add(m);const s=lab(v+'%');s.position.set((i-2)*1.9,h+.6,0);g.add(s)});return g},14,2,2);
+const v3=viewer('c3',()=>{sd=3;const g=new T.Group();g.userData.t=[];for(let i=0;i<70;i++){const t=tree(i%4==3?1:0,.75+R()*.5,GM[0]);t.position.set(R()*12-6,0,R()*12-6);if(t.position.length()>6.3)t.position.multiplyScalar(.55);t.visible=false;g.add(t);g.userData.t.push(t)}return g},13,1.2,3);
+function setF(n){document.getElementById('pc').textContent=n+'% лесистость';v3.cur.userData.t.forEach((t,i)=>t.visible=i<n*.7);const lo=n<50;rt.textContent=lo?'Растёт средообразующая роль':'Растёт ресурсная роль';
+ rd.textContent=lo?'Чем меньше лесов, тем заметнее и выше ценится защита климата, воды, почв от эрозии и иссушения.':'Чем больше лесов, тем сильнее их роль как источника древесины, работы и дохода.'}
+rg.oninput=()=>setF(+rg.value);setF(20);
+const S=[...document.querySelectorAll('.slide')],tr=document.getElementById('track');let cur=0;
+function go(i){cur=Math.max(0,Math.min(S.length-1,i));tr.style.transform=`translateX(-${cur*100}vw)`;prog.style.width=(cur+1)/S.length*100+'%';views.forEach(v=>v.on=S[cur].dataset.v==v.idx)}
+pv.onclick=()=>go(cur-1);nx.onclick=()=>go(cur+1);
+addEventListener('keydown',e=>{if(e.target.tagName=='INPUT')return;if(['ArrowRight','PageDown',' '].includes(e.key))go(cur+1);if(['ArrowLeft','PageUp'].includes(e.key))go(cur-1)});
+let tx;addEventListener('touchstart',e=>tx=e.touches[0].clientX);addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>60)go(cur+(d<0?1:-1))});
+let wl=0;addEventListener('wheel',e=>{if(Date.now()-wl>900&&Math.abs(e.deltaY+e.deltaX)>30){wl=Date.now();go(cur+(e.deltaY+e.deltaX>0?1:-1))}});
+(function loop(){views.forEach(v=>v.on&&v.draw());requestAnimationFrame(loop)})();go(0);
+</script></body></html>
